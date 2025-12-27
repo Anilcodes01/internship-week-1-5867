@@ -3,32 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dynamic User Profile</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div>
-      This is my index.html file and it's for testing purposes only for now.
-      <h1>This is my heading tag.</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, ea
-        qui ab, cupiditate totam nemo illo vero ullam explicabo voluptatem
-        pariatur officia labore soluta aut porro earum! Incidunt, cum optio!
-      </p>
+    <div class="container">
+      <div class="profile-card" id="profileCard">
+        <div class="loading-overlay hidden" id="loadingOverlay">
+          <div class="spinner"></div>
+        </div>
 
-      <h2>
-        This is my second heading tag. let's see if webhook implementation is
-        working or not.
-      </h2>
-      <p>
-        The webhook implementation didn't worked last time so let's try it
-        again. I closed the server and started it again to see if it works now.
-      </p>
-      <p>Let's try it again.</p>
-      <p>I think this is going to work this time. cause this time we fixed the issue.</p>
+        <div class="profile-header">
+          <img
+            src="https://via.placeholder.com/150"
+            alt="User Avatar"
+            id="displayAvatar"
+            class="avatar"
+          />
+        </div>
 
-      <p>Let's try this in prod now, that's the real game.</p>
+        <div id="viewMode" class="mode-content">
+          <h2 id="displayName">Loading...</h2>
+          <p id="displayTitle" class="text-muted">Loading...</p>
+          <div class="info-group">
+            <label>Email:</label>
+            <span id="displayEmail">Loading...</span>
+          </div>
+          <div class="info-group">
+            <label>Bio:</label>
+            <p id="displayBio">Loading...</p>
+          </div>
+          <button id="editBtn" class="btn btn-primary">Edit Profile</button>
+        </div>
+
+        <form id="editForm" class="mode-content hidden">
+          <div class="form-group">
+            <label for="inputName">Full Name</label>
+            <input type="text" id="inputName" required />
+            <small class="error-msg" id="errorName"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="inputTitle">Job Title</label>
+            <input type="text" id="inputTitle" required />
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" id="inputEmail" required />
+            <small class="error-msg" id="errorEmail"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="inputBio">Bio</label>
+            <textarea id="inputBio" rows="3"></textarea>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" id="cancelBtn" class="btn btn-secondary">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <script></script>
+    <div id="toast" class="toast hidden">Profile updated successfully!</div>
+
+    <script src="script.js"></script>
   </body>
 </html>
